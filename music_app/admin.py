@@ -15,5 +15,4 @@ username: azAdminUsl
 
 password: djangoAzOPsd
 
-
 '''
