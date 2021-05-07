@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import TestModel
+from . import models
 # Register your models here.
-admin.site.register(TestModel)
+admin.site.register(models.AlbumCategory)
+admin.site.register(models.MusicList)

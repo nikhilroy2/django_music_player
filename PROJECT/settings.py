@@ -75,8 +75,13 @@ WSGI_APPLICATION = 'PROJECT.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd7icod2s5su9v4',
+        'USER': 'mwgqvjwxudtdnx',
+        'PASSWORD': '023c331bd6c9e912b7c74512e4601f75a0b89c15535cf2cfe46c55cfd25c1f60',
+        # Or an IP Address that your DB is hosted on
+        'HOST': 'ec2-18-215-111-67.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -142,6 +147,7 @@ AWS_LOCATION = 'static'
 STATICFILES_DIRS = [
     BASE_DIR/'static'
 ]
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'PROJECT.storage_backends.MediaStorage' #the media storage configurations
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
