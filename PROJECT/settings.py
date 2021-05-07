@@ -149,5 +149,6 @@ STATICFILES_DIRS = [
 ]
 #STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'PROJECT.storage_backends.MediaStorage' #the media storage configurations
+# the media storage configurations
+DEFAULT_FILE_STORAGE = 'PROJECT.storage_backends.MediaStorage'
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

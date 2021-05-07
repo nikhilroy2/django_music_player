@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .models import MusicList, AlbumCategory
+from .models import NewMp3, PopularMusic, FavoriteMusic
 # Create your views here.
 def Index(request):
     context = {
-        "music_list": MusicList.objects.all()
+        "NewMp3": NewMp3.objects.all(),
+        "PopularMusic": PopularMusic.objects.all(),
+        "FavoriteMusic": FavoriteMusic.objects.all()
     }
-    print(MusicList.objects.all())
     return render(request, 'index.html', {"context": context})
