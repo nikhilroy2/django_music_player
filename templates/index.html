@@ -27,8 +27,12 @@
                         </h4>
                         <div class="card-body">
                             <ul class="list-group">
-                              
-                               
+
+                                {% for NewMp3 in context.NewMp3 %}
+                                <li class="list-group-item border-0">
+                                    {{NewMp3.id}}. <a href="{{NewMp3.upload_music.url}}">{{NewMp3.upload_music}}</a>
+                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -42,21 +46,12 @@
                         </h4>
                         <div class="card-body">
                             <ul class="list-group">
+                                {% for PopularMusic in context.PopularMusic %}
                                 <li class="list-group-item border-0">
-                                    1. <a href="#">perviz - seni Dinle</a>
+                                    {{PopularMusic.id}}. <a
+                                        href="{{PopularMusic.upload_music.url}}">{{PopularMusic.upload_music}}</a>
                                 </li>
-                                <li class="list-group-item border-0">
-                                    2. <a href="#">perviz - seni Dinle</a>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    3. <a href="#">perviz - seni Dinle</a>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    4. <a href="#">perviz - seni Dinle</a>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    5. <a href="#">perviz - seni Dinle</a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -70,21 +65,12 @@
                         </h4>
                         <div class="card-body">
                             <ul class="list-group">
+                                {% for FavoriteMusic in context.FavoriteMusic %}
                                 <li class="list-group-item border-0">
-                                    1. <a href="#">perviz - seni Dinle</a>
+                                    {{FavoriteMusic.id}}. <a
+                                        href="{{FavoriteMusic.upload_music.url}}">{{FavoriteMusic.upload_music}}</a>
                                 </li>
-                                <li class="list-group-item border-0">
-                                    2. <a href="#">perviz - seni Dinle</a>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    3. <a href="#">perviz - seni Dinle</a>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    4. <a href="#">perviz - seni Dinle</a>
-                                </li>
-                                <li class="list-group-item border-0">
-                                    5. <a href="#">perviz - seni Dinle</a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

@@ -4,3 +4,16 @@ from . import models
 admin.site.register(models.NewMp3)
 admin.site.register(models.FavoriteMusic)
 admin.site.register(models.PopularMusic)
+
+
+
+
+
+'''
+
+username: azAdminUsl
+
+password: djangoAzOPsd
+
+
+'''
