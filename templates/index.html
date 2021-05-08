@@ -29,9 +29,11 @@
                             <ul class="list-group">
 
                                 {% for NewMp3 in context.NewMp3 %}
-                                <li class="list-group-item border-0">
-                                    {{NewMp3.id}}. <a href="{{NewMp3.upload_music.url}}">{{NewMp3.upload_music}}</a>
-                                </li>
+                                <ol class="list-group-item border-0">
+                                     <a href="{% url 'music_view' NewMp3.upload_music|cut:'NewMp3/'|cut:'.mp3' %}}">
+                                        {{NewMp3.upload_music|cut:'NewMp3/'}}
+                                    </a>
+                                </ol>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -45,14 +47,14 @@
                             Popular Music
                         </h4>
                         <div class="card-body">
-                            <ul class="list-group">
+                            <ol class="list-group">
                                 {% for PopularMusic in context.PopularMusic %}
                                 <li class="list-group-item border-0">
-                                    {{PopularMusic.id}}. <a
-                                        href="{{PopularMusic.upload_music.url}}">{{PopularMusic.upload_music}}</a>
+                                    <a
+                                        href="{% url 'music_view' PopularMusic.upload_music|cut:'PopularMusic/'|cut:'.mp3' %}}">{{PopularMusic.upload_music|cut:'PopularMusic/'}}</a>
                                 </li>
                                 {% endfor %}
-                            </ul>
+                            </ol>
                         </div>
                     </div>
                 </div>
@@ -64,14 +66,14 @@
                             Favorite Music
                         </h4>
                         <div class="card-body">
-                            <ul class="list-group">
+                            <ol class="list-group">
                                 {% for FavoriteMusic in context.FavoriteMusic %}
                                 <li class="list-group-item border-0">
-                                    {{FavoriteMusic.id}}. <a
-                                        href="{{FavoriteMusic.upload_music.url}}">{{FavoriteMusic.upload_music}}</a>
+                                     <a
+                                        href="{% url 'music_view' FavoriteMusic.upload_music|cut:'FavoriteMusic/'|cut:'.mp3' %}}">{{FavoriteMusic.upload_music|cut:'FavoriteMusic/'}}</a>
                                 </li>
                                 {% endfor %}
-                            </ul>
+                            </ol>
                         </div>
                     </div>
                 </div>

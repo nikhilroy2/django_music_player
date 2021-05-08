@@ -7,4 +7,10 @@ def Index(request):
         "PopularMusic": PopularMusic.objects.all(),
         "FavoriteMusic": FavoriteMusic.objects.all()
     }
+    
     return render(request, 'index.html', {"context": context})
+
+
+
+def MusicList(request, pk):
+    return render(request, 'music_list.html')
