@@ -10,7 +10,7 @@
                     <div class="card">
                         <h4 class="card-title text-center p-3 text-white bg-primary">Music Player</h4>
                         <div class="card-body">
-                            <audio src=""></audio>
+                            <audio src="" controls id="musicAudioPlay"></audio>
                         </div>
                     </div>
                 </div>
@@ -18,5 +18,9 @@
         </div>
     </div>
 </section>
+<script>
+    let musicAudioPlay = document.querySelector('#musicAudioPlay')
+    musicAudioPlay.setAttribute('src', localStorage.getItem('music_list'))
+</script>
 
 {% endblock content %}

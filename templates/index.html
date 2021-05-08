@@ -30,7 +30,7 @@
 
                                 {% for NewMp3 in context.NewMp3 %}
                                 <ol class="list-group-item border-0">
-                                     <a href="{% url 'music_view' NewMp3.upload_music|cut:'NewMp3/'|cut:'.mp3' %}}">
+                                     <a onclick="localStorage.setItem('music_list', '{{NewMp3.upload_music.url}}')" href="{% url 'music_view' NewMp3.upload_music|cut:'NewMp3/'|cut:'.mp3' %}}">
                                         {{NewMp3.upload_music|cut:'NewMp3/'}}
                                     </a>
                                 </ol>
@@ -50,7 +50,7 @@
                             <ol class="list-group">
                                 {% for PopularMusic in context.PopularMusic %}
                                 <li class="list-group-item border-0">
-                                    <a
+                                    <a onclick="localStorage.setItem('music_list', '{{PopularMusic.upload_music.url}}')"
                                         href="{% url 'music_view' PopularMusic.upload_music|cut:'PopularMusic/'|cut:'.mp3' %}}">{{PopularMusic.upload_music|cut:'PopularMusic/'}}</a>
                                 </li>
                                 {% endfor %}
@@ -69,7 +69,7 @@
                             <ol class="list-group">
                                 {% for FavoriteMusic in context.FavoriteMusic %}
                                 <li class="list-group-item border-0">
-                                     <a
+                                     <a onclick="localStorage.setItem('music_list', '{{FavoriteMusic.upload_music.url}}')"
                                         href="{% url 'music_view' FavoriteMusic.upload_music|cut:'FavoriteMusic/'|cut:'.mp3' %}}">{{FavoriteMusic.upload_music|cut:'FavoriteMusic/'}}</a>
                                 </li>
                                 {% endfor %}
