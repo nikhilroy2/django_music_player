@@ -9,23 +9,31 @@
                 <div class="card__wrapper shadow-1-strong w-100">
                     <div class="card">
                         <h4 class="card-title text-center p-3 text-white bg-primary">Music Player</h4>
-                        <div class="card-body">
-                            <div class="text-center">
-                                <strong>
-                                    Music: <span id="music__name"></span>
-                                </strong>
-                            </div>
+                        <div class="card-body w-75 mx-auto">
+
+                            {% for music in music_self_list %}
+                            
+
+                           
+                            <ul class="list-unstyled">
+                                <li> <strong>Music name:</strong> {{music.music_name}}</li>
+                                <li> <strong>Artist name:</strong> {{music.artist_name}}</li>
+                                <li> <strong>Category name:</strong> {{music.category_name}}</li>
+                            </ul>
                             <div class="text-center my-3">
-                                <audio src="" controls id="musicAudioPlay"></audio>
+                                <audio src="{{music.upload_music.url}}" controls id="musicAudioPlay"></audio>
                             </div>
+                            
                             <div class="justify-content-center d-flex flex-wrap my-3">
-                                <button id="download__btn" class="rounded-pill  btn me-2 btn-primary"> <i
+                                <button onclick="window.open('{{music.upload_music.url}}')" id="download__btn" class="rounded-pill  btn me-2 btn-primary"> <i
                                         class="fas fa-download    "></i> Download</button>
-                                <button id="listen__btn" class="rounded-pill  btn me-2 btn-primary"> <i
+                                <button onclick="document.querySelector('#musicAudioPlay').play()" id="listen__btn" class="rounded-pill  btn me-2 btn-primary"> <i
                                         class="fas fa-music    "></i> Listen</button>
                                 <button class="rounded-pill  btn btn-primary"> <i class="fas fa-share    "></i>
                                     Share</button>
                             </div>
+
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -34,16 +42,4 @@
         </div>
     </div>
 </section>
-<script>
-    let musicAudioPlay = document.querySelector('#musicAudioPlay')
-    musicAudioPlay.setAttribute('src', localStorage.getItem('music_list'))
-    document.querySelector('#download__btn').addEventListener('click', e => {
-        window.open(localStorage.getItem('music_list'))
-    })
-    document.querySelector('#listen__btn').addEventListener('click', e => {
-        musicAudioPlay.play();
-    })
-    document.querySelector('#music__name').innerHTML = localStorage.getItem('music_name')
-</script>
-
 {% endblock content %}

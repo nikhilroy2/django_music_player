@@ -1,0 +1,51 @@
+{% extends './layout/base.html' %}
+
+{% block content %}
+{% include './components/alphabet.html' %}
+
+<section>
+    <div class="container-xxl mt-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="col__wrapper shadow-1-strong">
+                    <h3 class="text-center bg-primary text-white p-2 w-100 mb-0">Artist List</h3>
+                    <div class="card">
+                        <h4 class="mx-3 mt-2">List: {{alphabet_type}}</h4>
+                        <div class="card-body mx-3 mb-2">
+
+                            <ol type="1" class="list-group">
+                                {% for artist_name in artist_name %}
+
+
+                                {% ifchanged artist_name.artist_name|date %}
+                                <li class="border-0">
+                                    <a href="{% url 'artist_music' artist_name.artist_name %}">
+                                        {{artist_name.artist_name}}
+                                    </a>
+                                </li>
+
+                                {% endifchanged %}
+
+                                {% empty %}
+                                <h4 class="text-center">
+                                    There is no music of List: {{alphabet_type}}
+                                </h4>
+
+                                {% endfor %}
+
+
+                            </ol>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

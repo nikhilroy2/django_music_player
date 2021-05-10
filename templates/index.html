@@ -16,69 +16,35 @@
     </div>
 </section>
 
+{% include './components/alphabet.html' %}
+
 <section class="p-3 my-3">
     <div class="container-xxl">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-            <div class="col">
-                <div class="card__wrapper ">
-                    <div class="card shadow-1-strong ">
-                        <h4 class="card-title m-0 bg-danger text-white text-center p-3">
-                            New Mp3s
-                        </h4>
-                        <div class="card-body m-3">
-                            <ol class="list-group" type="1">
-
-                                {% for NewMp3 in context.NewMp3 %}
-                                <li class="border-0">
-                                    <a onclick="localStorage.setItem('music_list', '{{NewMp3.upload_music.url}}'); localStorage.setItem('music_name', `{{NewMp3.upload_music|cut:'NewMp3/'}}`)"
-                                        href="{% url 'music_view' NewMp3.upload_music|cut:'NewMp3/'|cut:'.mp3' %}}">
-                                        {{NewMp3.upload_music|cut:'NewMp3/'}}
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card__wrapper ">
-                    <div class="card shadow-1-strong">
+            {% for category in AlbumCategory %}
+            <div class="col h-auto">
+                <div class="card__wrapper h-100">
+                    <div class="card shadow-1-strong h-100">
                         <h4 class="card-title m-0 bg-primary text-white text-center p-3">
-                            Popular Music
+                            {{category.category_name}}
                         </h4>
                         <div class="card-body m-3">
                             <ol type="1" class="list-group">
-                                {% for PopularMusic in context.PopularMusic %}
+                                {% for list in category.music_list.all %}
                                 <li class="border-0">
-                                    <a onclick="localStorage.setItem('music_list', '{{PopularMusic.upload_music.url}}'); localStorage.setItem('music_name', `{{PopularMusic.upload_music|cut:'PopularMusic/'}}`)"
-                                        href="{% url 'music_view' PopularMusic.upload_music|cut:'PopularMusic/'|cut:'.mp3' %}}">{{PopularMusic.upload_music|cut:'PopularMusic/'}}</a>
+                                    <a href="{% url 'music_view' list.music_name|urlencode   %}">
+                                        {{list.music_name}}
+                                    </a>
                                 </li>
+
                                 {% endfor %}
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card__wrapper ">
-                    <div class="card shadow-1-strong ">
-                        <h4 class="card-title m-0 bg-dark text-white text-center p-3">
-                            Favorite Music
-                        </h4>
-                        <div class="card-body m-3">
-                            <ol type="1" class="list-group ">
-                                {% for FavoriteMusic in context.FavoriteMusic %}
-                                <li class="border-0">
-                                    <a onclick="localStorage.setItem('music_list', '{{FavoriteMusic.upload_music.url}}'); localStorage.setItem('music_name', `{{FavoriteMusic.upload_music|cut:'FavoriteMusic/'}}`)"
-                                        href="{% url 'music_view' FavoriteMusic.upload_music|cut:'FavoriteMusic/'|cut:'.mp3' %}}">{{FavoriteMusic.upload_music|cut:'FavoriteMusic/'}}</a>
-                                </li>
-                                {% endfor %}
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            {% endfor %}
         </div>
     </div>
 </section>
