@@ -19,9 +19,16 @@ def MusicList(request, pk):
     music_name = str(pk).replace('%20', ' ')
     #print(music_name)
     music_self_list = AlbumMusic.objects.filter(music_name=music_name)
+    set_artist = ''
+    for music in music_self_list:
+        set_artist = music.artist_name
+    #print(set_artist)
+    music_artist = AlbumMusic.objects.filter(artist_name=set_artist)
     #print(music_self_list)
     context = {
-        "music_self_list": music_self_list
+        "music_self_list": music_self_list,
+        "music_artist": music_artist,
+        "set_artist": set_artist
     }
     return render(request, 'music_list.html', context)
 
