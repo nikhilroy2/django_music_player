@@ -1,3 +1,4 @@
+from typing import OrderedDict
 from django.shortcuts import render
 from .models import NewMp3, PopularMusic, FavoriteMusic,AlbumMusic,AlbumCategory
 from music_app import models
@@ -28,11 +29,18 @@ def ArtistAlphabet(request, pk):
     alphabet_type = str(pk).replace('get_', '')
     music_list = models.AlbumMusic.objects.all()
     artist_name = models.AlbumMusic.objects.filter(artist_alphabet=alphabet_type)
+    artist_list = []
+    for artist in artist_name:
+        artist_list.append(artist.artist_name)
+    #print(artist_list)
     context = {
         "alphabet_type": alphabet_type,
         "music_list": music_list,
-        "artist_name": artist_name
+        "artist_name": artist_name,
+        "artist_list": list(dict.fromkeys(artist_list))
     }
+    
+    #print(artist_name_single)
 
     return render(request, 'artist_search.html', context)
 
@@ -44,4 +52,6 @@ def ArtistMusic(request, pk):
         "artist_name": pk,
         "artist_music": artist_music
     }
+    
+
     return render(request, 'artist_music.html', context)

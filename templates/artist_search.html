@@ -14,18 +14,12 @@
                         <div class="card-body mx-3 mb-2">
 
                             <ol type="1" class="list-group">
-                                {% for artist_name in artist_name %}
-
-
-                                {% ifchanged artist_name.artist_name|date %}
+                                {% for artist_name in artist_list %}
                                 <li class="border-0">
-                                    <a href="{% url 'artist_music' artist_name.artist_name %}">
-                                        {{artist_name.artist_name}}
+                                    <a href="{% url 'artist_music' artist_name %}">
+                                        {{artist_name}}
                                     </a>
                                 </li>
-
-                                {% endifchanged %}
-
                                 {% empty %}
                                 <h4 class="text-center">
                                     There is no music of List: {{alphabet_type}}

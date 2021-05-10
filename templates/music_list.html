@@ -25,8 +25,10 @@
                             </div>
                             
                             <div class="justify-content-center d-flex flex-wrap my-3">
-                                <button onclick="window.open('{{music.upload_music.url}}')" id="download__btn" class="rounded-pill  btn me-2 btn-primary"> <i
-                                        class="fas fa-download    "></i> Download</button>
+                                <a download="true" href="{{music.upload_music.url}}" class="rounded-pill  btn me-2 btn-primary" id="download__btn">
+                                    <i class="fas fa-download    "></i> Download
+                                </a>
+                            
                                 <button onclick="document.querySelector('#musicAudioPlay').play()" id="listen__btn" class="rounded-pill  btn me-2 btn-primary"> <i
                                         class="fas fa-music    "></i> Listen</button>
                                 <button class="rounded-pill  btn btn-primary"> <i class="fas fa-share    "></i>
