@@ -21,36 +21,45 @@
                     {% endif %}
 
                     <div class="row justify-content-center">
-                        <form novalidate method="POST"
+                        <form  method="POST"
                             class="col-11 col-sm-10 col-md-9 col-lg-8 shadow-2 p-2 p-md-5 rounded-3 my-3">
                             {% csrf_token %}
                             <div class="form-group mb-2">
                                 {{signup.first_name.label_tag}}
-                                {{signup.first_name|add_class:'form-control'}}
+                                {{signup.first_name|add_class:'form-control'|attr:"required=true"}}
+                                <div class="help__text">
+                                    {{signup.first_name.help_text}}
+                                </div>
                             </div>
                             <div class="form-group mb-2">
                                 {{signup.last_name.label_tag}}
-                                {{signup.last_name|add_class:'form-control'}}
-
+                                {{signup.last_name|add_class:'form-control'|attr:"required=true"}}
+                                <div class="help__text">
+                                    {{signup.last_name.help_text}}
+                                </div>
                             </div>
                             <div class="form-group mb-2">
                                 {{signup.username.label_tag}}
-                                {{signup.username|add_class:'form-control'}}
-
+                                {{signup.username|add_class:'form-control'|attr:"required=true"}}
+                                <div class="help__text">
+                                    {{signup.username.help_text}}
+                                </div>
 
                             </div>
                             <div class="form-group mb-2">
                                 {{signup.email.label_tag}}
-                                {{signup.email|add_class:'form-control'}}
-
+                                {{signup.email|add_class:'form-control'|attr:"required=true"}}
+                                <div class="help__text">
+                                    {{signup.email.help_text}}
+                                </div>
                              
 
                             </div>
                             <div class="form-group mb-2">
                                 {{signup.password1.label_tag}}
-                                {{signup.password1|add_class:'form-control'}}
+                                {{signup.password1|add_class:'form-control'|attr:"required=true"}}
 
-                                <div style="font-size: 8px;">
+                                <div class="help__text">
                                     {{signup.password1.help_text}}
                                 </div>
 
@@ -59,9 +68,11 @@
                             </div>
                             <div class="form-group mb-2">
                                 {{signup.password2.label_tag}}
-                                {{signup.password2|add_class:'form-control'}}
+                                {{signup.password2|add_class:'form-control'|attr:"required=true"}}
 
-                               
+                                <div class="help__text">
+                                    {{signup.password2.help_text}}
+                                </div>
 
 
                             </div>
