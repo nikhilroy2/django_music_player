@@ -1,7 +1,18 @@
 from typing import OrderedDict
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import NewMp3, PopularMusic, FavoriteMusic,AlbumMusic,AlbumCategory
 from music_app import models
+
+
+#................User Auth .................
+from django.contrib import messages
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
+from .forms import SignUpForm
+from django.contrib.auth.models import User
+
+#................User Auth .................End
+
 # Create your views here.
 def Index(request):
     context = {
@@ -59,6 +70,46 @@ def ArtistMusic(request, pk):
         "artist_name": pk,
         "artist_music": artist_music
     }
-    
-
     return render(request, 'artist_music.html', context)
+
+def SignUpPage(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    else:
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                login(request, user)
+                messages.success(request, " Your account has Sign Up Successfully {request.user.username}")
+                return redirect('/')
+            messages.error(request, "Unsuccessful please see errors!")
+    form = SignUpForm
+    return render(request, 'signup.html', {"signup": form})
+
+
+
+def LoginPage(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    else:
+        if request.method == 'POST':
+            form = AuthenticationForm(request, data=request.POST)
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password')
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    messages.info(request, f'Welcome! You logged in as {username}')
+                    return redirect('/')
+                else:
+                    messages.error(request, 'Invalid username or password')
+   
+    form = AuthenticationForm()
+    return render(request,'login.html', {"login": form})
+
+def LogoutPage(request):
+    logout(request)
+    messages.success(request, 'You have log out!')
+    return redirect('/')

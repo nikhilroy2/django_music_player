@@ -42,7 +42,7 @@
                             <div class="text-center"><strong>Music List: {{set_artist}}</strong></div>
                             <ol class="list-group list-group-flush" type="1">
                                 {% for music in music_artist %}
-                                <li class="border-0"><a href="{{music.upload_music.url}}"> {{music.music_name}} </a></li>
+                                <li class="border-0"><a href="{% url 'music_view' music.music_name|urlencode   %}"> {{music.music_name}} </a></li>
                                 {% endfor %}
                             </ol>
 

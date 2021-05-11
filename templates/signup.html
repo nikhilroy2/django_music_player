@@ -1,0 +1,81 @@
+{% extends './layout/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<section>
+    <div class="container-xxl mt-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="col__wrapper p-3 shadow-1-strong rounded-3">
+                    <h4 class="text-center mt-3"> Sign up new account </h4>
+                    {% for m in messages %}
+                    <h4 class="text-center text-danger mt-3">
+                        {{m}}
+                    </h4>
+
+                    {% endfor %}
+
+                    {% if signup.errors %}
+                        {% for error in signup.errors %}
+                        <p> {{ error }} </p>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div class="row justify-content-center">
+                        <form novalidate method="POST"
+                            class="col-11 col-sm-10 col-md-9 col-lg-8 shadow-2 p-2 p-md-5 rounded-3 my-3">
+                            {% csrf_token %}
+                            <div class="form-group mb-2">
+                                {{signup.first_name.label_tag}}
+                                {{signup.first_name|add_class:'form-control'}}
+                            </div>
+                            <div class="form-group mb-2">
+                                {{signup.last_name.label_tag}}
+                                {{signup.last_name|add_class:'form-control'}}
+
+                            </div>
+                            <div class="form-group mb-2">
+                                {{signup.username.label_tag}}
+                                {{signup.username|add_class:'form-control'}}
+
+
+                            </div>
+                            <div class="form-group mb-2">
+                                {{signup.email.label_tag}}
+                                {{signup.email|add_class:'form-control'}}
+
+                             
+
+                            </div>
+                            <div class="form-group mb-2">
+                                {{signup.password1.label_tag}}
+                                {{signup.password1|add_class:'form-control'}}
+
+                                <div style="font-size: 8px;">
+                                    {{signup.password1.help_text}}
+                                </div>
+
+                              
+
+                            </div>
+                            <div class="form-group mb-2">
+                                {{signup.password2.label_tag}}
+                                {{signup.password2|add_class:'form-control'}}
+
+                               
+
+
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary my-2 btn-lg">Sign Up</button>
+                                <br>
+                                <a href="{% url 'login' %}">Already have account?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

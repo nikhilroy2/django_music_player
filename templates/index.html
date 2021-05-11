@@ -1,6 +1,9 @@
 {% extends './layout/base.html' %}
 
 {% block content %}
+{% for m in messages %}
+<h3 class="text-center mt-3">{{m}}</h3>
+{% endfor %}
 
 <section class="p-3 my-3">
     <div class="container-xxl">
