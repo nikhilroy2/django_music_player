@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cr(py(uoj5t=s&&&dt*eglrnn47bc*f-zko*#pc@f*m5fsy(x7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 # Application definition
 
@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'PROJECT.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd7icod2s5su9v4',
-        'USER': 'mwgqvjwxudtdnx',
-        'PASSWORD': '023c331bd6c9e912b7c74512e4601f75a0b89c15535cf2cfe46c55cfd25c1f60',
+        'NAME': 'dc50s0qg81il3v',
+        'USER': 'xvainumtdvjjym',
+        'PASSWORD': '3c0ccc2cb927ba9245a616071d5def421afbf77652f65606485c0eb29c4a45c2',
         # Or an IP Address that your DB is hosted on
-        'HOST': 'ec2-18-215-111-67.compute-1.amazonaws.com',
+        'HOST': 'ec2-54-152-185-191.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }

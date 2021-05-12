@@ -1,4 +1,5 @@
 from typing import OrderedDict
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from .models import NewMp3, PopularMusic, FavoriteMusic,AlbumMusic,AlbumCategory
 from music_app import models
@@ -42,6 +43,9 @@ def MusicList(request, pk):
         "set_artist": set_artist
     }
     return render(request, 'music_list.html', context)
+# def MusicDownload(request):
+#     return HttpResponse(content_type='application/force-download')
+
 
 def ArtistAlphabet(request, pk):
     alphabet_type = str(pk).replace('get_', '')
@@ -131,3 +135,13 @@ def MusicUploadPage(request):
         "upload_music": form
     }
     return render(request, 'music_upload.html', context)
+
+
+
+def SearchPage(request):
+    music_search = AlbumMusic.objects.all()
+    context = {
+        "music_search": music_search
+    }
+    print(music_search)
+    return render(request, 'search.html', context)
