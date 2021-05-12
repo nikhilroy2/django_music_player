@@ -8,7 +8,7 @@ from music_app import models
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import SignUpForm
+from .forms import AlbumMusicForm, SignUpForm
 from django.contrib.auth.models import User
 
 #................User Auth .................End
@@ -81,7 +81,7 @@ def SignUpPage(request):
             if form.is_valid():
                 user = form.save()
                 login(request, user)
-                messages.success(request, " Your account has Sign Up Successfully {request.user.username}")
+                messages.success(request, f"Your account has Sign Up Successfully {request.user.username}")
                 return redirect('/')
             messages.error(request, "Unsuccessful please see errors!")
     form = SignUpForm
@@ -113,3 +113,21 @@ def LogoutPage(request):
     logout(request)
     messages.success(request, 'You have log out!')
     return redirect('/')
+
+
+
+def MusicUploadPage(request):
+    if request.method == 'POST':
+        form = AlbumMusicForm(request.POST,request.FILES)
+        print(form.errors)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Uploaded Successfully')
+            #return render('/')
+        else:
+            messages.error(request, 'Uploaded Failure')
+    form = AlbumMusicForm()
+    context = {
+        "upload_music": form
+    }
+    return render(request, 'music_upload.html', context)

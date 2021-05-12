@@ -104,5 +104,6 @@ class AlbumMusic(models.Model):
     artist_alphabet = models.CharField(max_length=2, choices=Alphabet_Choices, default='A')
     category_name = models.ForeignKey(AlbumCategory,on_delete=models.CASCADE, related_name="music_list")
     upload_music = models.FileField(upload_to=file_location)
+    upload_thumbnail = models.ImageField(upload_to=file_location, null=True)
     def __str__(self):
         return str(self.music_name)

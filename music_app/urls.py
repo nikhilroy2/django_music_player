@@ -9,5 +9,6 @@ urlpatterns = [
     path('artist_music/<str:pk>', views.ArtistMusic, name="artist_music"),
     path('login', views.LoginPage, name="login"),
     path('signup', views.SignUpPage, name="signup"),
-    path('logout', views.LogoutPage, name="logout")
+    path('logout', views.LogoutPage, name="logout"),
+    path('music_upload', views.MusicUploadPage, name="music_upload")
 ]

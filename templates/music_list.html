@@ -1,5 +1,5 @@
 {% extends './layout/base.html' %}
-
+{% load static %}
 {% block content %}
 
 <section>
@@ -21,6 +21,13 @@
                                 <li> <strong>Category name:</strong> {{music.category_name}}</li>
                             </ul>
                             <div class="text-center my-3">
+                                
+                                {% if music.upload_thumbnail != null %}
+                                <img style="width: 150px; height: 150px" class="rounded-circle mx-auto d-block my-2" src="{{music.upload_thumbnail.url}}" alt="">
+                                {% else %}
+                                <img style="width: 150px; height: 150px" class="rounded-circle mx-auto d-block my-2" src="{% static 'img/music_play.png' %}" alt="">
+                                {% endif %}
+                                <br>
                                 <audio src="{{music.upload_music.url}}" controls id="musicAudioPlay"></audio>
                             </div>
                             

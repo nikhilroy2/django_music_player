@@ -1,0 +1,46 @@
+{% extends './layout/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container-xxl mt-3">
+        <div class="row justify-content-center">
+            <div class="col-11 col-md-9 col-lg-8">
+                <div class="col__wrapper p-3 shadow-1-strong rounded-3">
+                    <h4 class="text-center mt-3"> Music Upload </h4>
+
+                    {% for m in messages %}
+                    <h4 class="text-center mb-3 text-danger">
+                        {{m}}
+                    </h4>
+
+                    {% endfor %}
+                    <form action="" enctype= multipart/form-data method="POST">
+                        {% csrf_token %}
+                        {% for upload in upload_music %}
+
+                        <div class="form-group mb-2 mb-md-3">
+                            {{upload.label_tag}}
+                            <br>
+                            {% if upload.label == 'Upload music' %}
+                            
+                            {{upload|add_class:'form-control'|attr:'accept: mp3'}}
+
+                            {% else %}
+                            {{upload|add_class:'form-control'}}
+
+                            {% endif %}
+                        </div>
+
+                        {% endfor %}
+
+                        <div class="text-center my-3">
+                            <button class="btn btn-primary" type="submit">Upload Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
