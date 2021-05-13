@@ -10,8 +10,8 @@
                 </a>
 
                 <!-- Search form -->
-                <form class="input-group w-auto my-auto d-flex">
-                    <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search"
+                <form action="{% url 'search_music' %}" method="GET" class="input-group w-auto my-auto d-flex">
+                    <input  autocomplete="off" name="q" type="text" class="form-control rounded" placeholder="Search"
                         style="min-width: 125px;" />
                 </form>
             </div>

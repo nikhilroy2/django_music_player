@@ -139,7 +139,8 @@ def MusicUploadPage(request):
 
 
 def SearchPage(request):
-    music_search = AlbumMusic.objects.all()
+    search_option = request.GET.get('q')
+    music_search = AlbumMusic.objects.filter(music_name=search_option)
     context = {
         "music_search": music_search
     }
