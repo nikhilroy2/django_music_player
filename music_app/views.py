@@ -147,6 +147,6 @@ def SearchPage(request):
     print(music_search)
     return render(request, 'search.html', context)
 
-def DownloadCounter(request, pk):
-    print(pk)
-    return HttpResponse("Download Start")
+# def DownloadCounter(request, pk):
+#     print(pk)
+#     return HttpResponse("Download Start")

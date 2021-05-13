@@ -12,7 +12,7 @@ urlpatterns = [
     path('logout', views.LogoutPage, name="logout"),
     path('music_upload', views.MusicUploadPage, name="music_upload"),
     path('search_music', views.SearchPage, name="search_music"),
-    path('download/<str:pk>', views.DownloadCounter, name="download_count")
+    # path('download/<str:pk>', views.DownloadCounter, name="download_count")
 ]
 
 
