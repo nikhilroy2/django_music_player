@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from django.conf.urls import include, url
 
 urlpatterns = [
     path('', views.Index, name="index"),
@@ -11,5 +11,9 @@ urlpatterns = [
     path('signup', views.SignUpPage, name="signup"),
     path('logout', views.LogoutPage, name="logout"),
     path('music_upload', views.MusicUploadPage, name="music_upload"),
-    path('search_music', views.SearchPage, name="search_music")
+    path('search_music', views.SearchPage, name="search_music"),
+    path('download/<str:pk>', views.DownloadCounter, name="download_count")
 ]
+
+
+

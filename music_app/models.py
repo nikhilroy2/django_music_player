@@ -105,6 +105,11 @@ class AlbumMusic(models.Model):
     category_name = models.ForeignKey(AlbumCategory,on_delete=models.CASCADE,  related_name="music_list", null=True,  db_column="category_column",)
     upload_music = models.FileField(upload_to=file_location)
     upload_thumbnail = models.ImageField(upload_to=file_location, null=True, blank=True)
+    numdownload = models.IntegerField(null=True,default=0, editable=False)
+    def increment_numdownload(self):
+        self.numdownload +=1
+        return self.numdownload
+        
     def __str__(self):
         return str(self.music_name)
 

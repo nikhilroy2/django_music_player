@@ -9,6 +9,7 @@
                 <div class="card__wrapper shadow-1-strong w-100">
                     <div class="card">
                         <h4 class="card-title text-center p-1 text-white bg-primary">Music Player</h4>
+                      
                         <div class="card-body w-75 mx-auto">
 
                             {% for music in music_self_list %}
@@ -20,6 +21,8 @@
                                 <li> <strong>Artist name:</strong> {{music.artist_name}}</li>
                                 <li> <strong>Category name:</strong> {{music.category_name}}</li>
                                 <li> <strong>Music Size:</strong> {{music.upload_music.size|filesizeformat}}</li>
+                                <li> <strong>Download Count:</strong> <span class="download__counting">0</span></li>
+                                <li> <strong>Duration:</strong> <span class="music_duration">0</span></li>
                             </ul>
                             <div class="text-center my-3">
                                 
@@ -33,7 +36,7 @@
                             </div>
                             
                             <div class="justify-content-center d-flex flex-wrap my-3">
-                                <a download="true" href="{{music.upload_music.url}}" class="rounded-pill  btn me-2 btn-primary" id="download__btn">
+                                <a onclick="DownloadLink(this)" download="true" href="{{music.upload_music.url}}" class="rounded-pill  btn me-2 btn-primary" id="download__btn">
                                     <i class="fas fa-download    "></i> Download
                                 </a>
                             
@@ -61,4 +64,7 @@
         </div>
     </div>
 </section>
+
+
 {% endblock content %}
+

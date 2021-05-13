@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cr(py(uoj5t=s&&&dt*eglrnn47bc*f-zko*#pc@f*m5fsy(x7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 # Application definition
 
@@ -48,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'PROJECT.urls'
 
@@ -84,6 +86,18 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'folaz_test1',
+#         'USER': 'folaz_test1',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',
+#         'PORT': '2083',
+#     }
+# }
 
 
 # Password validation
