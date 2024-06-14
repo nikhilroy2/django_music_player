@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cr(py(uoj5t=s&&&dt*eglrnn47bc*f-zko*#pc@f*m5fsy(x7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+DEBUG = True
+# ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,16 +74,10 @@ WSGI_APPLICATION = 'PROJECT.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dc50s0qg81il3v',
-        'USER': 'xvainumtdvjjym',
-        'PASSWORD': '3c0ccc2cb927ba9245a616071d5def421afbf77652f65606485c0eb29c4a45c2',
-        # Or an IP Address that your DB is hosted on
-        'HOST': 'ec2-54-152-185-191.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
